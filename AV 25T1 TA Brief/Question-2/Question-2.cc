@@ -24,11 +24,13 @@ public:
     int getMoney() { return mMoney; }
     void addMoney(int money)
     {
+        // locked proces so we can go through and add money
         mtx.lock();
         for (int i = 0; i < money; ++i)
         {
             mMoney++;
         }
+        // unlocked so we can continue to use money
         mtx.unlock();
     }
 };
