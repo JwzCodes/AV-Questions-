@@ -22,11 +22,11 @@ public:
         : mElements(list) {}
 };
 
-struct
+struct person
 {
     int age;
     float weight;
-} person;
+};
 
 // removed (const int)
 void show_output(int **pp)
@@ -84,7 +84,7 @@ int main()
     // Initialise a person on the heap with the use of smart pointers (unique_ptr) instead.
     // struct person *ptr;
     // ptr = (struct person *)malloc(sizeof(struct person));
-    std::unique_ptr<decltype(person)> ptr = std::make_unique<decltype(person)>();
+    std::unique_ptr<person> ptr = std::make_unique<person>();
     ptr->age = 10;
     ptr->weight = 55.5;
 
