@@ -31,7 +31,7 @@ struct person
 // removed (const int)
 void show_output(int **pp)
 {
-    printf("%p : %p : %d", pp, *pp, **pp);
+    printf("%p : %p : %d", (void *)pp, (void *)*pp, **pp);
 }
 
 int main()
