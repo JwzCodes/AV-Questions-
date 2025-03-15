@@ -1,6 +1,8 @@
 cmake_minimum_required(VERSION 3.8)
 project(nmp25)
 
+set (CMAKE_CXX_STANDARD 14)
+# added this line for compatability with macos
 enable_testing()
 
 if(CMAKE_COMPILER_IS_GNUCXX OR CMAKE_CXX_COMPILER_ID MATCHES "Clang")
