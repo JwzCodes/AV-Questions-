@@ -8,29 +8,37 @@
 #include <thread>
 #include <iostream>
 
+// said to use mutex
+#include <mutex>
+
 int total = 0;
 
 class Wallet
 {
     int mMoney;
+
+    std::mutex mtx;
+
 public:
-    Wallet() :mMoney(0) {}
+    Wallet() : mMoney(0) {}
     int getMoney() { return mMoney; }
     void addMoney(int money)
     {
+        mtx.lock();
         for (int i = 0; i < money; ++i)
         {
             mMoney++;
         }
+        mtx.unlock();
     }
 };
-
 
 int fillWalletWithMoney()
 {
     Wallet walletObject;
     std::vector<std::thread> threads;
-    for (int i = 0; i < 5; ++i) {
+    for (int i = 0; i < 5; ++i)
+    {
         threads.push_back(std::thread(&Wallet::addMoney, &walletObject, 1000));
     }
     for (int i = 0; i < threads.size(); i++)
